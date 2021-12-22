@@ -1,0 +1,28 @@
+<header class='site-header'>
+  <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'blog:index' %}">Django Blog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'blog:index' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'blog:about' %}">About</a>
+        </div>
+        <!---Right Side-->
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+            <span class="nav-item nav-link">Hello, {{ user.username }} !</span>
+            <a class="nav-item nav-link" href="{% url 'Users:logout' %}">Log Out</a>
+            <a class="nav-item nav-link" href="{% url 'Users:profile' %}">Profile</a>
+            <a class="nav-item nav-link" href="{% url 'blog:new_post' %}">New Post</a>
+          {% else %}
+            <a class="nav-item nav-link" href="{% url 'Users:login' %}">Login</a>
+            <a class="nav-item nav-link" href="{% url 'Users:register' %}">Register</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
